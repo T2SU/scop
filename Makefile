@@ -6,7 +6,7 @@
 #    By: smun <smun@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 16:12:02 by smun              #+#    #+#              #
-#    Updated: 2022/09/08 20:02:18 by smun             ###   ########.fr        #
+#    Updated: 2022/09/09 14:30:04 by smun             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ OBJDIR		:= obj
 SRCDIR		:= src
 SDL2_INC	:= $(shell sdl2-config --cflags)
 SDL2_LIB	:= $(shell sdl2-config --static-libs)
-VK_INC		:= -I$(shell brew --prefix molten-vk)/include
-VK_LIB		:= $(shell brew --prefix molten-vk)/lib/libMoltenVK.a
+MVK_INC		:= -I$(shell brew --prefix molten-vk)/include
+MVK_LIB		:= $(shell brew --prefix molten-vk)/lib/libMoltenVK.a
+VK_INC		:= -I$(shell brew --prefix vulkan-headers)/include
 
-INC			:= $(SDL2_INC) $(VK_INC) -I$(INCDIR)
-LIB			:= $(SDL2_LIB) $(VK_LIB)
+INC			:= $(SDL2_INC) $(MVK_INC) $(VK_INC) -I$(INCDIR)
+LIB			:= $(SDL2_LIB) $(MVK_LIB)
 
 FILES		:= \
 				std.cpp \
